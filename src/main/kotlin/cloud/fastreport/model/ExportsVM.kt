@@ -37,6 +37,6 @@ interface ExportsVM : FilesVMBase {
     @Json(name = "\$t")
     override val dollarT: kotlin.String
     @Json(name = "files")
-    val files: kotlin.collections.List<ExportVM>?
+    override val files: kotlin.collections.List<ExportVM>?
 }
 

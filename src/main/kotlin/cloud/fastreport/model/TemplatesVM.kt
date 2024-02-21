@@ -37,6 +37,6 @@ interface TemplatesVM : FilesVMBase {
     @Json(name = "\$t")
     override val dollarT: kotlin.String
     @Json(name = "files")
-    val files: kotlin.collections.List<TemplateVM>?
+    override val files: kotlin.collections.List<TemplateVM>?
 }
 

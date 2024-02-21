@@ -37,6 +37,6 @@ interface ReportsVM : FilesVMBase {
     @Json(name = "\$t")
     override val dollarT: kotlin.String
     @Json(name = "files")
-    val files: kotlin.collections.List<ReportVM>?
+    override val files: kotlin.collections.List<ReportVM>?
 }
 

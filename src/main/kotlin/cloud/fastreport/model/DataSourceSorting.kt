@@ -38,7 +38,7 @@ enum class DataSourceSorting(val value: kotlin.String) {
     editedTime("EditedTime"),
 
     @Json(name = "Name")
-    name("Name");
+    name0("Name");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use
