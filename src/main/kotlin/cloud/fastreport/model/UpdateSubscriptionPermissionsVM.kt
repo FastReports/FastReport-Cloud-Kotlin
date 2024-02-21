@@ -36,6 +36,6 @@ interface UpdateSubscriptionPermissionsVM : CloudBaseVM {
     @Json(name = "administrate")
     val administrate: SubscriptionAdministrate
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
 }
 

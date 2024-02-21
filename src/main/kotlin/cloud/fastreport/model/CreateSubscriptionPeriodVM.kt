@@ -32,7 +32,7 @@ interface CreateSubscriptionPeriodVM : CloudBaseVM {
     @Json(name = "planId")
     val planId: kotlin.String
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "start")
     val start: java.time.OffsetDateTime?
     @Json(name = "end")

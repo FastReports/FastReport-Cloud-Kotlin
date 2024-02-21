@@ -33,7 +33,7 @@ interface AdminUpdateCurrentSubscriptionPlanVM : CloudBaseVM {
     @Json(name = "plan")
     val plan: UpdateSubscriptionPlanVM
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "start")
     val start: java.time.OffsetDateTime?
     @Json(name = "end")

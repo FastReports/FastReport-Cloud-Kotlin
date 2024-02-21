@@ -31,7 +31,7 @@ import com.squareup.moshi.JsonClass
 interface DataSourcesVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "dataSources")
     val dataSources: kotlin.collections.List<DataSourceVM>?
     @Json(name = "count")

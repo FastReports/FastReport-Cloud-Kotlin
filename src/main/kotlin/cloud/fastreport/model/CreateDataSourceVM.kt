@@ -35,7 +35,7 @@ interface CreateDataSourceVM : CloudBaseVM {
     @Json(name = "subscriptionId")
     val subscriptionId: kotlin.String
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "name")
     val name: kotlin.String?
     @Json(name = "connectionType")

@@ -32,7 +32,7 @@ import com.squareup.moshi.JsonClass
 interface UserSettingsVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "profileVisibility")
     val profileVisibility: ProfileVisibility?
     @Json(name = "defaultSubscription")

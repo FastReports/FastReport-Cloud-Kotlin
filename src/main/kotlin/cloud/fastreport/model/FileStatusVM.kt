@@ -31,7 +31,7 @@ import com.squareup.moshi.JsonClass
 interface FileStatusVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "fileStatus")
     val fileStatus: FileStatus?
 }

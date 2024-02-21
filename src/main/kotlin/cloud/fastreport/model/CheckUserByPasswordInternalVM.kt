@@ -30,7 +30,7 @@ import com.squareup.moshi.JsonClass
 interface CheckUserByPasswordInternalVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "email")
     val email: kotlin.String?
     @Json(name = "password")

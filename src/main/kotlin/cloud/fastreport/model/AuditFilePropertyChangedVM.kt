@@ -41,7 +41,7 @@ import com.squareup.moshi.JsonClass
 interface AuditFilePropertyChangedVM : AuditActionVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "propertyName")
     val propertyName: kotlin.String?
     @Json(name = "oldValue")

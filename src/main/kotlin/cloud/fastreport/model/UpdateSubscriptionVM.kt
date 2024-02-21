@@ -31,7 +31,7 @@ import com.squareup.moshi.JsonClass
 interface UpdateSubscriptionVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "name")
     val name: kotlin.String?
     @Json(name = "locale")

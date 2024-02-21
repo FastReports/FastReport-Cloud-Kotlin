@@ -36,6 +36,6 @@ interface UpdateFilePermissionsVM : CloudBaseVM {
     @Json(name = "administrate")
     val administrate: FileAdministrate
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
 }
 

@@ -33,7 +33,7 @@ import com.squareup.moshi.JsonClass
 interface RunWebhookTaskVM : RunTransportTaskBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "headers")
     val headers: kotlin.collections.Map<kotlin.String, kotlin.String>?
     @Json(name = "url")

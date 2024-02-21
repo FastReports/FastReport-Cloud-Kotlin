@@ -50,7 +50,7 @@ import com.squareup.moshi.JsonClass
 interface ExportVM : FileVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "format")
     val format: ExportFormat?
     @Json(name = "reportId")

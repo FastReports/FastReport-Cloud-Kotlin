@@ -30,7 +30,7 @@ import com.squareup.moshi.JsonClass
 interface FileTagsUpdateVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "tags")
     val tags: kotlin.collections.List<kotlin.String>?
 }

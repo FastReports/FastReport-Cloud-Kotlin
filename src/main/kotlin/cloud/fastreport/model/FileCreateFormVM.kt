@@ -32,7 +32,7 @@ interface FileCreateFormVM : CloudBaseVM {
     @Json(name = "fileContent")
     val fileContent: java.io.File
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "tags")
     val tags: kotlin.collections.List<kotlin.String>?
     @Json(name = "icon")

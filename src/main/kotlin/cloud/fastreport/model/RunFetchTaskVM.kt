@@ -31,7 +31,7 @@ import com.squareup.moshi.JsonClass
 interface RunFetchTaskVM : RunTaskBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "dataSourceId")
     val dataSourceId: kotlin.String?
 }

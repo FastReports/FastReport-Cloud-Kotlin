@@ -32,6 +32,6 @@ interface UpdateDataSourceSubscriptionVM : CloudBaseVM {
     @Json(name = "subscriptionId")
     val subscriptionId: kotlin.String
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
 }
 

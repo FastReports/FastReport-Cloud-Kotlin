@@ -32,7 +32,7 @@ interface CreateApiKeyVM : CloudBaseVM {
     @Json(name = "expired")
     val expired: java.time.OffsetDateTime
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "description")
     val description: kotlin.String?
 }

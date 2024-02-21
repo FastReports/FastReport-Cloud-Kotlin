@@ -31,7 +31,7 @@ import com.squareup.moshi.JsonClass
 interface ExportReportVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "fileName")
     val fileName: kotlin.String?
     @Json(name = "folderId")

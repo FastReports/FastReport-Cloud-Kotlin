@@ -37,7 +37,7 @@ import com.squareup.moshi.JsonClass
 interface CreateTransformTaskBaseVM : CreateTaskBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "inputFile")
     val inputFile: InputFileVM?
     @Json(name = "locale")

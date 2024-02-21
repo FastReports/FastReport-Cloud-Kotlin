@@ -35,7 +35,7 @@ import com.squareup.moshi.JsonClass
 interface ExportsVM : FilesVMBase {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "files")
     val files: kotlin.collections.List<ExportVM>?
 }

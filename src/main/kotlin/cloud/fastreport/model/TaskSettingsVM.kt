@@ -30,7 +30,7 @@ import com.squareup.moshi.JsonClass
 interface TaskSettingsVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "prepare")
     val prepare: kotlin.Boolean?
     @Json(name = "exportTemplate")

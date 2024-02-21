@@ -32,6 +32,6 @@ interface UpdateSubscriptionLocaleVM : CloudBaseVM {
     @Json(name = "locale")
     val locale: kotlin.String
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
 }
 

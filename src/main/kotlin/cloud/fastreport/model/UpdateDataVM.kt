@@ -30,7 +30,7 @@ import com.squareup.moshi.JsonClass
 interface UpdateDataVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "newData")
     val newData: kotlin.String?
     @Json(name = "editorId")

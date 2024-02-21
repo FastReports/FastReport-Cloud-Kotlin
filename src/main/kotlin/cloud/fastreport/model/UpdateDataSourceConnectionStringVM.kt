@@ -32,6 +32,6 @@ interface UpdateDataSourceConnectionStringVM : CloudBaseVM {
     @Json(name = "connectionString")
     val connectionString: kotlin.String
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
 }
 

@@ -42,7 +42,7 @@ import com.squareup.moshi.JsonClass
 interface CreateExportReportTaskVM : CreateTransformTaskBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "exportParameters")
     val exportParameters: kotlin.collections.Map<kotlin.String, kotlin.String>?
     @Json(name = "format")

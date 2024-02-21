@@ -36,7 +36,7 @@ import com.squareup.moshi.JsonClass
 interface TaskPermissionCRUDVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "create")
     val create: TaskCreate?
     @Json(name = "delete")

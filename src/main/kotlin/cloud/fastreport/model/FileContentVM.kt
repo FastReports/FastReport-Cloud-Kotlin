@@ -30,7 +30,7 @@ import com.squareup.moshi.JsonClass
 interface FileContentVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "content")
     val content: kotlin.ByteArray?
 }

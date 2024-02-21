@@ -36,6 +36,6 @@ interface UpdateGroupPermissionsVM : CloudBaseVM {
     @Json(name = "administrate")
     val administrate: GroupAdministrate
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
 }
 

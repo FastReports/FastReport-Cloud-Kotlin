@@ -50,7 +50,7 @@ import com.squareup.moshi.JsonClass
 interface TemplateVM : FileVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "reportInfo")
     val reportInfo: ReportInfo?
 }

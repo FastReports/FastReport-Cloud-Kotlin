@@ -34,7 +34,7 @@ import com.squareup.moshi.JsonClass
 interface UpdateTransportTaskBaseVM : UpdateTaskBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "inputFile")
     val inputFile: InputFileVM?
 }

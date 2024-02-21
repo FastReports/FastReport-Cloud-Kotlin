@@ -32,7 +32,7 @@ import com.squareup.moshi.JsonClass
 interface CreateGroupAdminVM : CreateGroupVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "ownerId")
     val ownerId: kotlin.String?
 }

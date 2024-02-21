@@ -32,6 +32,6 @@ interface FolderIconVM : CloudBaseVM {
     @Json(name = "icon")
     val icon: kotlin.ByteArray
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
 }
 

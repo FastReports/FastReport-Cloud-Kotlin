@@ -30,7 +30,7 @@ import com.squareup.moshi.JsonClass
 interface PreviewTemplateVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "locale")
     val locale: kotlin.String?
     @Json(name = "reportParameters")

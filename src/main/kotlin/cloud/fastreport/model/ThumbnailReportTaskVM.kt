@@ -38,7 +38,7 @@ import com.squareup.moshi.JsonClass
 interface ThumbnailReportTaskVM : TaskBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "reportId")
     val reportId: kotlin.String?
 }

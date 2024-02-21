@@ -33,6 +33,6 @@ import com.squareup.moshi.JsonClass
 interface ExportFolderCreateVM : FolderCreateVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
 }
 

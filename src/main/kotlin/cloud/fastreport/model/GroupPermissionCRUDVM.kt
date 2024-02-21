@@ -36,7 +36,7 @@ import com.squareup.moshi.JsonClass
 interface GroupPermissionCRUDVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "create")
     val create: GroupCreate?
     @Json(name = "delete")

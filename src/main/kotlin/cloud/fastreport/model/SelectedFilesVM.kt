@@ -30,7 +30,7 @@ import com.squareup.moshi.JsonClass
 interface SelectedFilesVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "isAllSelected")
     val isAllSelected: kotlin.Boolean?
     @Json(name = "folderId")

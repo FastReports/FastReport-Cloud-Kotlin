@@ -31,7 +31,7 @@ import com.squareup.moshi.JsonClass
 interface GroupsVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "groups")
     val groups: kotlin.collections.List<GroupVM>?
     @Json(name = "count")

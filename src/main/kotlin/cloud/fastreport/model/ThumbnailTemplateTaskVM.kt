@@ -38,7 +38,7 @@ import com.squareup.moshi.JsonClass
 interface ThumbnailTemplateTaskVM : TaskBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "templateId")
     val templateId: kotlin.String?
 }

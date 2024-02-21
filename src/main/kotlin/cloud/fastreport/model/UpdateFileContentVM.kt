@@ -32,6 +32,6 @@ interface UpdateFileContentVM : CloudBaseVM {
     @Json(name = "content")
     val content: kotlin.ByteArray
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
 }
 

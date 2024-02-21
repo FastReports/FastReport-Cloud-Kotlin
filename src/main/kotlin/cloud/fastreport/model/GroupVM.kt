@@ -30,7 +30,7 @@ import com.squareup.moshi.JsonClass
 interface GroupVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "id")
     val id: kotlin.String?
     @Json(name = "name")

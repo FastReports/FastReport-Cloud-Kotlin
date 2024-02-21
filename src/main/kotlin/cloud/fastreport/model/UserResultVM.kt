@@ -32,7 +32,7 @@ import com.squareup.moshi.JsonClass
 interface UserResultVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "isAuthenticated")
     val isAuthenticated: kotlin.Boolean?
     @Json(name = "id")

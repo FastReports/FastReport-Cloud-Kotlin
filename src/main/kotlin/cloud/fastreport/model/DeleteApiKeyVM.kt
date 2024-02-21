@@ -32,6 +32,6 @@ interface DeleteApiKeyVM : CloudBaseVM {
     @Json(name = "apiKey")
     val apiKey: kotlin.String
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
 }
 

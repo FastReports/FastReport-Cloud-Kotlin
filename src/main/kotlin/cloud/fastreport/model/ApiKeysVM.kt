@@ -31,7 +31,7 @@ import com.squareup.moshi.JsonClass
 interface ApiKeysVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "apiKeys")
     val apiKeys: kotlin.collections.List<ApiKeyVM>?
     @Json(name = "count")

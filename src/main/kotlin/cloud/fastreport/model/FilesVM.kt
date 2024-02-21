@@ -35,6 +35,6 @@ import com.squareup.moshi.JsonClass
 interface FilesVM : FilesVMBase {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
 }
 

@@ -30,7 +30,7 @@ import com.squareup.moshi.JsonClass
 interface FolderSizeVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "size")
     val propertySize: kotlin.Long?
     @Json(name = "realSize")

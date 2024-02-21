@@ -31,7 +31,7 @@ import com.squareup.moshi.JsonClass
 interface SubscriptionPlansVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "subscriptionPlans")
     val subscriptionPlans: kotlin.collections.List<SubscriptionPlanVM>?
     @Json(name = "count")

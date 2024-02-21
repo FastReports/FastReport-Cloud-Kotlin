@@ -31,7 +31,7 @@ import com.squareup.moshi.JsonClass
 interface AnalysisResultsVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "results")
     val results: kotlin.collections.List<AnalysisResultVM>?
 }

@@ -31,7 +31,7 @@ import com.squareup.moshi.JsonClass
 interface SubscriptionPeriodVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "startTime")
     val startTime: java.time.OffsetDateTime?
     @Json(name = "endTime")

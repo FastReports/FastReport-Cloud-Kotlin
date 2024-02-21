@@ -40,7 +40,7 @@ import com.squareup.moshi.JsonClass
 interface FTPUploadTaskVM : TransportTaskBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "archive")
     val archive: kotlin.Boolean?
     @Json(name = "archiveName")

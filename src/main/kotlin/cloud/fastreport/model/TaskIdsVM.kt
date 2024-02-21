@@ -30,7 +30,7 @@ import com.squareup.moshi.JsonClass
 interface TaskIdsVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "count")
     val count: kotlin.Long?
     @Json(name = "ids")

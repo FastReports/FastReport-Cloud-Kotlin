@@ -30,7 +30,7 @@ import com.squareup.moshi.JsonClass
 interface SolvationReportVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "solvedProblems")
     val solvedProblems: kotlin.collections.Map<kotlin.String, kotlin.Int>?
 }

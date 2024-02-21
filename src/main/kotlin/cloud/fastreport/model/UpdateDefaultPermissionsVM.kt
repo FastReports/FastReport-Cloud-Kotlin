@@ -34,7 +34,7 @@ import com.squareup.moshi.JsonClass
 interface UpdateDefaultPermissionsVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "filePermissions")
     val filePermissions: UpdateFilePermissionsVM?
     @Json(name = "groupPermissions")

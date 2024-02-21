@@ -31,7 +31,7 @@ import com.squareup.moshi.JsonClass
 interface SubscriptionInviteVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "usages")
     val usages: kotlin.Long?
     @Json(name = "durable")

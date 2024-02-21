@@ -31,7 +31,7 @@ import com.squareup.moshi.JsonClass
 interface InputFileVM : CloudBaseVM {
 
     @Json(name = "\$t")
-    val dollarT: kotlin.String
+    override val dollarT: kotlin.String
     @Json(name = "entityId")
     val entityId: kotlin.String?
     @Json(name = "type")
