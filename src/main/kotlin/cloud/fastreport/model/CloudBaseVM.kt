@@ -29,6 +29,6 @@ import com.squareup.moshi.JsonClass
 interface CloudBaseVM {
 
     @Json(name = "\$t")
-    override val dollarT: kotlin.String
+    val dollarT: kotlin.String
 }
 

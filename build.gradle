@@ -1,5 +1,5 @@
 group 'cloud.fastreport.sdk'
-version '2024.1.22'
+version '2024.1.24'
 
 wrapper {
     gradleVersion = '7.5'
