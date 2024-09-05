@@ -22,11 +22,13 @@ import okhttp3.HttpUrl
 import cloud.fastreport.model.AuditActionsVM
 import cloud.fastreport.model.BreadcrumbsVM
 import cloud.fastreport.model.CountVM
+import cloud.fastreport.model.CreateFileShareVM
 import cloud.fastreport.model.ExportReportVM
 import cloud.fastreport.model.ExportVM
 import cloud.fastreport.model.FileIconVM
 import cloud.fastreport.model.FilePermissionsVM
 import cloud.fastreport.model.FileRenameVM
+import cloud.fastreport.model.FileSharingKeysVM
 import cloud.fastreport.model.FileSorting
 import cloud.fastreport.model.FileTagsUpdateVM
 import cloud.fastreport.model.FileVM
@@ -203,6 +205,91 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
         return RequestConfig(
             method = RequestMethod.POST,
             path = "/api/rp/v1/Reports/{subscriptionId}/CopyFiles".replace("{"+"subscriptionId"+"}", encodeURIComponent(subscriptionId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * Count all folders and files from recycle bin
+     * User with a Get DeletedFiles permission can access this method.
+     * @param subscriptionId subscription id
+     * @param searchPattern  (optional, default to "")
+     * @param useRegex  (optional, default to false)
+     * @return CountVM
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun reportFolderAndFileCountRecycleBinFoldersAndFiles(subscriptionId: kotlin.String, searchPattern: kotlin.String? = "", useRegex: kotlin.Boolean? = false) : CountVM {
+        val localVarResponse = reportFolderAndFileCountRecycleBinFoldersAndFilesWithHttpInfo(subscriptionId = subscriptionId, searchPattern = searchPattern, useRegex = useRegex)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as CountVM
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Count all folders and files from recycle bin
+     * User with a Get DeletedFiles permission can access this method.
+     * @param subscriptionId subscription id
+     * @param searchPattern  (optional, default to "")
+     * @param useRegex  (optional, default to false)
+     * @return ApiResponse<CountVM?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun reportFolderAndFileCountRecycleBinFoldersAndFilesWithHttpInfo(subscriptionId: kotlin.String, searchPattern: kotlin.String?, useRegex: kotlin.Boolean?) : ApiResponse<CountVM?> {
+        val localVariableConfig = reportFolderAndFileCountRecycleBinFoldersAndFilesRequestConfig(subscriptionId = subscriptionId, searchPattern = searchPattern, useRegex = useRegex)
+
+        return request<Unit, CountVM>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation reportFolderAndFileCountRecycleBinFoldersAndFiles
+     *
+     * @param subscriptionId subscription id
+     * @param searchPattern  (optional, default to "")
+     * @param useRegex  (optional, default to false)
+     * @return RequestConfig
+     */
+    fun reportFolderAndFileCountRecycleBinFoldersAndFilesRequestConfig(subscriptionId: kotlin.String, searchPattern: kotlin.String?, useRegex: kotlin.Boolean?) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                if (searchPattern != null) {
+                    put("searchPattern", listOf(searchPattern.toString()))
+                }
+                if (useRegex != null) {
+                    put("useRegex", listOf(useRegex.toString()))
+                }
+            }
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/api/rp/v1/Reports/{subscriptionId}/CountRecycleBinFolderAndFiles".replace("{"+"subscriptionId"+"}", encodeURIComponent(subscriptionId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -2388,6 +2475,81 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
     }
 
     /**
+     * Create a new key, that can be used to share access to a file  (You need Administrate.Anon permission to create a new key)
+     * 
+     * @param id file id
+     * @param createFileShareVM parameters for sharing key creation (optional)
+     * @return FileSharingKeysVM
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun reportsCreateSharingKey(id: kotlin.String, createFileShareVM: CreateFileShareVM? = null) : FileSharingKeysVM {
+        val localVarResponse = reportsCreateSharingKeyWithHttpInfo(id = id, createFileShareVM = createFileShareVM)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as FileSharingKeysVM
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Create a new key, that can be used to share access to a file  (You need Administrate.Anon permission to create a new key)
+     * 
+     * @param id file id
+     * @param createFileShareVM parameters for sharing key creation (optional)
+     * @return ApiResponse<FileSharingKeysVM?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun reportsCreateSharingKeyWithHttpInfo(id: kotlin.String, createFileShareVM: CreateFileShareVM?) : ApiResponse<FileSharingKeysVM?> {
+        val localVariableConfig = reportsCreateSharingKeyRequestConfig(id = id, createFileShareVM = createFileShareVM)
+
+        return request<CreateFileShareVM, FileSharingKeysVM>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation reportsCreateSharingKey
+     *
+     * @param id file id
+     * @param createFileShareVM parameters for sharing key creation (optional)
+     * @return RequestConfig
+     */
+    fun reportsCreateSharingKeyRequestConfig(id: kotlin.String, createFileShareVM: CreateFileShareVM?) : RequestConfig<CreateFileShareVM> {
+        val localVariableBody = createFileShareVM
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/api/rp/v1/Reports/File/{id}/sharingKey".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
      * Delete specified file
      * User with Delete permission can access the method.
      * @param id file id
@@ -2449,6 +2611,78 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
         return RequestConfig(
             method = RequestMethod.DELETE,
             path = "/api/rp/v1/Reports/File/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * Deletes a sharing key, making links, that utilizing it no longer work
+     * 
+     * @param id file id
+     * @param key key to delete
+     * @return void
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun reportsDeleteSharingKey(id: kotlin.String, key: kotlin.String) : Unit {
+        val localVarResponse = reportsDeleteSharingKeyWithHttpInfo(id = id, key = key)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> Unit
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Deletes a sharing key, making links, that utilizing it no longer work
+     * 
+     * @param id file id
+     * @param key key to delete
+     * @return ApiResponse<Unit?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Throws(IllegalStateException::class, IOException::class)
+    fun reportsDeleteSharingKeyWithHttpInfo(id: kotlin.String, key: kotlin.String) : ApiResponse<Unit?> {
+        val localVariableConfig = reportsDeleteSharingKeyRequestConfig(id = id, key = key)
+
+        return request<Unit, Unit>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation reportsDeleteSharingKey
+     *
+     * @param id file id
+     * @param key key to delete
+     * @return RequestConfig
+     */
+    fun reportsDeleteSharingKeyRequestConfig(id: kotlin.String, key: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.DELETE,
+            path = "/api/rp/v1/Reports/File/{id}/sharingKey".replace("{"+"id"+"}", encodeURIComponent(id.toString())).replace("{"+"key"+"}", encodeURIComponent(key.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -2931,6 +3165,77 @@ class ReportsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
         return RequestConfig(
             method = RequestMethod.GET,
             path = "/api/rp/v1/Reports/File/{id}/permissions".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * Returns all sharing keys, associated with the file
+     * 
+     * @param id file id
+     * @return FileSharingKeysVM
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun reportsGetSharingKeys(id: kotlin.String) : FileSharingKeysVM {
+        val localVarResponse = reportsGetSharingKeysWithHttpInfo(id = id)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as FileSharingKeysVM
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Returns all sharing keys, associated with the file
+     * 
+     * @param id file id
+     * @return ApiResponse<FileSharingKeysVM?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun reportsGetSharingKeysWithHttpInfo(id: kotlin.String) : ApiResponse<FileSharingKeysVM?> {
+        val localVariableConfig = reportsGetSharingKeysRequestConfig(id = id)
+
+        return request<Unit, FileSharingKeysVM>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation reportsGetSharingKeys
+     *
+     * @param id file id
+     * @return RequestConfig
+     */
+    fun reportsGetSharingKeysRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/api/rp/v1/Reports/File/{id}/sharingKeys".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,

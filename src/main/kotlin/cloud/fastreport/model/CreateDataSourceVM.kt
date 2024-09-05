@@ -17,6 +17,7 @@ package cloud.fastreport.model
 
 import cloud.fastreport.model.CloudBaseVM
 import cloud.fastreport.model.DataSourceConnectionType
+import cloud.fastreport.model.DataSourceSelectCommandVM
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -40,5 +41,7 @@ interface CreateDataSourceVM : CloudBaseVM {
     val name: kotlin.String?
     @Json(name = "connectionType")
     val connectionType: DataSourceConnectionType?
+    @Json(name = "selectCommands")
+    val selectCommands: kotlin.collections.List<DataSourceSelectCommandVM>?
 }
 

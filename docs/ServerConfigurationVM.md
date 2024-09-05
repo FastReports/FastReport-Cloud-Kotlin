@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **homePageLink** | **kotlin.String** |  |  [optional]
 **authServerName** | **kotlin.String** |  |  [optional]
 **updateWorkspaceLink** | **kotlin.String** |  |  [optional]
+**sharingEnabled** | **kotlin.Boolean** |  |  [optional]
 
 
 

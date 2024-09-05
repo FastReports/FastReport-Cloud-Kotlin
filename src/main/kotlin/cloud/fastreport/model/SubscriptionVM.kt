@@ -49,5 +49,7 @@ interface SubscriptionVM : CloudBaseVM {
     val reportsFolder: SubscriptionFolder?
     @Json(name = "exportsFolder")
     val exportsFolder: SubscriptionFolder?
+    @Json(name = "tags")
+    val tags: kotlin.collections.List<kotlin.String>?
 }
 

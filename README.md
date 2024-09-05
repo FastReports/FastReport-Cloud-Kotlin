@@ -65,10 +65,12 @@ Class | Method | HTTP request | Description
 *DataSourcesApi* | [**dataSourcesFetchData**](docs/DataSourcesApi.md#datasourcesfetchdata) | **GET** /api/data/v1/DataSources/{id}/fetch | This should connect to a database and set data structure
 *DataSourcesApi* | [**dataSourcesGetAvailableDataSources**](docs/DataSourcesApi.md#datasourcesgetavailabledatasources) | **GET** /api/data/v1/DataSources | Returns all of the data sources, that current user have permission for in a subscription <br />  The method will return minimal infomration about the datasources: <br />  id, name, editedTime, status.
 *DataSourcesApi* | [**dataSourcesGetDataSource**](docs/DataSourcesApi.md#datasourcesgetdatasource) | **GET** /api/data/v1/DataSources/{id} | Get data source by id
+*DataSourcesApi* | [**dataSourcesGetParameterTypes**](docs/DataSourcesApi.md#datasourcesgetparametertypes) | **GET** /api/data/v1/DataSources/parameterTypes/{dataSourceType} | Get data source parameter DataType's
 *DataSourcesApi* | [**dataSourcesGetPermissions**](docs/DataSourcesApi.md#datasourcesgetpermissions) | **GET** /api/data/v1/DataSources/{id}/permissions | Get all Data source permissions
 *DataSourcesApi* | [**dataSourcesRenameDataSource**](docs/DataSourcesApi.md#datasourcesrenamedatasource) | **PUT** /api/data/v1/DataSources/{id}/rename | Rename data source by id
-*DataSourcesApi* | [**dataSourcesUpdateConnectionString**](docs/DataSourcesApi.md#datasourcesupdateconnectionstring) | **PUT** /api/data/v1/DataSources/{id}/ConnectionString | Update data source's connection string by id
+*DataSourcesApi* | [**dataSourcesUpdateConnectionString**](docs/DataSourcesApi.md#datasourcesupdateconnectionstring) | **PUT** /api/data/v1/DataSources/{id}/connectionString | Update data source's connection string by id
 *DataSourcesApi* | [**dataSourcesUpdatePermissions**](docs/DataSourcesApi.md#datasourcesupdatepermissions) | **POST** /api/data/v1/DataSources/{id}/permissions | Update permissions
+*DataSourcesApi* | [**dataSourcesUpdateSelectCommands**](docs/DataSourcesApi.md#datasourcesupdateselectcommands) | **PUT** /api/data/v1/DataSources/{id}/selectCommands | Update data source's select commands by id
 *DataSourcesApi* | [**dataSourcesUpdateSubscriptionDataSource**](docs/DataSourcesApi.md#datasourcesupdatesubscriptiondatasource) | **PUT** /api/data/v1/DataSources/{id}/updateSubscription | Update data source's subscription
 *DownloadApi* | [**downloadGetExport**](docs/DownloadApi.md#downloadgetexport) | **GET** /download/e/{id} | Returns a export file with specified id
 *DownloadApi* | [**downloadGetExportThumbnail**](docs/DownloadApi.md#downloadgetexportthumbnail) | **GET** /download/e/{id}/thumbnail | Returns export's thumbnail
@@ -82,6 +84,7 @@ Class | Method | HTTP request | Description
 *DownloadApi* | [**downloadGetTemplates**](docs/DownloadApi.md#downloadgettemplates) | **GET** /download/ts/{archiveName} | Returns a zip archive with selected files
 *ExportsApi* | [**exportFolderAndFileClearRecycleBin**](docs/ExportsApi.md#exportfolderandfileclearrecyclebin) | **DELETE** /api/rp/v1/Exports/{subscriptionId}/ClearRecycleBin | Delete all folders and files from recycle bin
 *ExportsApi* | [**exportFolderAndFileCopyFiles**](docs/ExportsApi.md#exportfolderandfilecopyfiles) | **POST** /api/rp/v1/Exports/{subscriptionId}/CopyFiles | Copy folders and files to a specified folder
+*ExportsApi* | [**exportFolderAndFileCountRecycleBinFoldersAndFiles**](docs/ExportsApi.md#exportfolderandfilecountrecyclebinfoldersandfiles) | **GET** /api/rp/v1/Exports/{subscriptionId}/CountRecycleBinFolderAndFiles | Count all folders and files from recycle bin
 *ExportsApi* | [**exportFolderAndFileDeleteFiles**](docs/ExportsApi.md#exportfolderandfiledeletefiles) | **POST** /api/rp/v1/Exports/{subscriptionId}/DeleteFiles | Delete folders and files
 *ExportsApi* | [**exportFolderAndFileGetCount**](docs/ExportsApi.md#exportfolderandfilegetcount) | **GET** /api/rp/v1/Exports/Folder/{id}/CountFolderAndFiles | Get count of files and folders what contains in a specified folder
 *ExportsApi* | [**exportFolderAndFileGetFoldersAndFiles**](docs/ExportsApi.md#exportfolderandfilegetfoldersandfiles) | **GET** /api/rp/v1/Exports/Folder/{id}/ListFolderAndFiles | Get all folders and files from specified folder
@@ -109,12 +112,15 @@ Class | Method | HTTP request | Description
 *ExportsApi* | [**exportFoldersUpdatePermissions**](docs/ExportsApi.md#exportfoldersupdatepermissions) | **POST** /api/rp/v1/Exports/{id}/permissions | Update permissions
 *ExportsApi* | [**exportFoldersUpdateTags**](docs/ExportsApi.md#exportfoldersupdatetags) | **PUT** /api/rp/v1/Exports/Folder/{id}/UpdateTags | Update tags
 *ExportsApi* | [**exportsCopyFile**](docs/ExportsApi.md#exportscopyfile) | **POST** /api/rp/v1/Exports/File/{id}/Copy/{folderId} | Copy file to a specified folder
+*ExportsApi* | [**exportsCreateSharingKey**](docs/ExportsApi.md#exportscreatesharingkey) | **POST** /api/rp/v1/Exports/File/{id}/sharingKey | Create a new key, that can be used to share access to a file  (You need Administrate.Anon permission to create a new key)
 *ExportsApi* | [**exportsDeleteFile**](docs/ExportsApi.md#exportsdeletefile) | **DELETE** /api/rp/v1/Exports/File/{id} | Delete specified file
+*ExportsApi* | [**exportsDeleteSharingKey**](docs/ExportsApi.md#exportsdeletesharingkey) | **DELETE** /api/rp/v1/Exports/File/{id}/sharingKey | Deletes a sharing key, making links, that utilizing it no longer work
 *ExportsApi* | [**exportsGetFile**](docs/ExportsApi.md#exportsgetfile) | **GET** /api/rp/v1/Exports/File/{id} | Get export by specified id
 *ExportsApi* | [**exportsGetFileHistory**](docs/ExportsApi.md#exportsgetfilehistory) | **GET** /api/rp/v1/Exports/File/{id}/History | Returns list of actions, performed on this file
 *ExportsApi* | [**exportsGetFilesCount**](docs/ExportsApi.md#exportsgetfilescount) | **GET** /api/rp/v1/Exports/Folder/{id}/CountFiles | Get count of files what contains in a specified folder
 *ExportsApi* | [**exportsGetFilesList**](docs/ExportsApi.md#exportsgetfileslist) | **GET** /api/rp/v1/Exports/Folder/{id}/ListFiles | Get all files from specified folder. <br />  User with Get Entity permission can access this method. <br />  The method will returns minimal infomration about the file: <br />  id, name, size, editedTime, createdTime, tags, status, statusReason.
 *ExportsApi* | [**exportsGetPermissions**](docs/ExportsApi.md#exportsgetpermissions) | **GET** /api/rp/v1/Exports/File/{id}/permissions | 
+*ExportsApi* | [**exportsGetSharingKeys**](docs/ExportsApi.md#exportsgetsharingkeys) | **GET** /api/rp/v1/Exports/File/{id}/sharingKeys | Returns all sharing keys, associated with the file
 *ExportsApi* | [**exportsMoveFile**](docs/ExportsApi.md#exportsmovefile) | **POST** /api/rp/v1/Exports/File/{id}/Move/{folderId} | Move file to a specified folder
 *ExportsApi* | [**exportsMoveFileToBin**](docs/ExportsApi.md#exportsmovefiletobin) | **DELETE** /api/rp/v1/Exports/File/{id}/ToBin | Move specified file to recycle bin
 *ExportsApi* | [**exportsRecoverFile**](docs/ExportsApi.md#exportsrecoverfile) | **POST** /api/rp/v1/Exports/File/{id}/Recover | Recover specified file from bin
@@ -136,6 +142,7 @@ Class | Method | HTTP request | Description
 *HealthCheckApi* | [**healthCheckDataGet**](docs/HealthCheckApi.md#healthcheckdataget) | **GET** /api/backend/v1/HealthCheck | healthcheck
 *ReportsApi* | [**reportFolderAndFileClearRecycleBin**](docs/ReportsApi.md#reportfolderandfileclearrecyclebin) | **DELETE** /api/rp/v1/Reports/{subscriptionId}/ClearRecycleBin | Delete all folders and files from recycle bin
 *ReportsApi* | [**reportFolderAndFileCopyFiles**](docs/ReportsApi.md#reportfolderandfilecopyfiles) | **POST** /api/rp/v1/Reports/{subscriptionId}/CopyFiles | Copy folders and files to a specified folder
+*ReportsApi* | [**reportFolderAndFileCountRecycleBinFoldersAndFiles**](docs/ReportsApi.md#reportfolderandfilecountrecyclebinfoldersandfiles) | **GET** /api/rp/v1/Reports/{subscriptionId}/CountRecycleBinFolderAndFiles | Count all folders and files from recycle bin
 *ReportsApi* | [**reportFolderAndFileDeleteFiles**](docs/ReportsApi.md#reportfolderandfiledeletefiles) | **POST** /api/rp/v1/Reports/{subscriptionId}/DeleteFiles | Delete folders and files
 *ReportsApi* | [**reportFolderAndFileGetCount**](docs/ReportsApi.md#reportfolderandfilegetcount) | **GET** /api/rp/v1/Reports/Folder/{id}/CountFolderAndFiles | Get count of files and folders what contains in a specified folder
 *ReportsApi* | [**reportFolderAndFileGetFoldersAndFiles**](docs/ReportsApi.md#reportfolderandfilegetfoldersandfiles) | **GET** /api/rp/v1/Reports/Folder/{id}/ListFolderAndFiles | Get all folders and files from specified folder
@@ -164,13 +171,16 @@ Class | Method | HTTP request | Description
 *ReportsApi* | [**reportFoldersUpdatePermissions**](docs/ReportsApi.md#reportfoldersupdatepermissions) | **POST** /api/rp/v1/Reports/{id}/permissions | Update permissions
 *ReportsApi* | [**reportFoldersUpdateTags**](docs/ReportsApi.md#reportfoldersupdatetags) | **PUT** /api/rp/v1/Reports/Folder/{id}/UpdateTags | Update tags
 *ReportsApi* | [**reportsCopyFile**](docs/ReportsApi.md#reportscopyfile) | **POST** /api/rp/v1/Reports/File/{id}/Copy/{folderId} | Copy file to a specified folder
+*ReportsApi* | [**reportsCreateSharingKey**](docs/ReportsApi.md#reportscreatesharingkey) | **POST** /api/rp/v1/Reports/File/{id}/sharingKey | Create a new key, that can be used to share access to a file  (You need Administrate.Anon permission to create a new key)
 *ReportsApi* | [**reportsDeleteFile**](docs/ReportsApi.md#reportsdeletefile) | **DELETE** /api/rp/v1/Reports/File/{id} | Delete specified file
+*ReportsApi* | [**reportsDeleteSharingKey**](docs/ReportsApi.md#reportsdeletesharingkey) | **DELETE** /api/rp/v1/Reports/File/{id}/sharingKey | Deletes a sharing key, making links, that utilizing it no longer work
 *ReportsApi* | [**reportsExport**](docs/ReportsApi.md#reportsexport) | **POST** /api/rp/v1/Reports/File/{id}/Export | Export specified report to a specified format
 *ReportsApi* | [**reportsGetFile**](docs/ReportsApi.md#reportsgetfile) | **GET** /api/rp/v1/Reports/File/{id} | Get specified file
 *ReportsApi* | [**reportsGetFileHistory**](docs/ReportsApi.md#reportsgetfilehistory) | **GET** /api/rp/v1/Reports/File/{id}/History | Returns list of actions, performed on this file
 *ReportsApi* | [**reportsGetFilesCount**](docs/ReportsApi.md#reportsgetfilescount) | **GET** /api/rp/v1/Reports/Folder/{id}/CountFiles | Get count of files what contains in a specified folder
 *ReportsApi* | [**reportsGetFilesList**](docs/ReportsApi.md#reportsgetfileslist) | **GET** /api/rp/v1/Reports/Folder/{id}/ListFiles | Get all files from specified folder. <br />  User with Get Entity permission can access this method. <br />  The method will returns minimal infomration about the file: <br />  id, name, size, editedTime, createdTime, tags, status, statusReason.
 *ReportsApi* | [**reportsGetPermissions**](docs/ReportsApi.md#reportsgetpermissions) | **GET** /api/rp/v1/Reports/File/{id}/permissions | 
+*ReportsApi* | [**reportsGetSharingKeys**](docs/ReportsApi.md#reportsgetsharingkeys) | **GET** /api/rp/v1/Reports/File/{id}/sharingKeys | Returns all sharing keys, associated with the file
 *ReportsApi* | [**reportsMoveFile**](docs/ReportsApi.md#reportsmovefile) | **POST** /api/rp/v1/Reports/File/{id}/Move/{folderId} | Move file to a specified folder
 *ReportsApi* | [**reportsMoveFileToBin**](docs/ReportsApi.md#reportsmovefiletobin) | **DELETE** /api/rp/v1/Reports/File/{id}/ToBin | Move specified file to recycle bin
 *ReportsApi* | [**reportsRecoverFile**](docs/ReportsApi.md#reportsrecoverfile) | **POST** /api/rp/v1/Reports/File/{id}/Recover | Recover specified file from bin
@@ -215,6 +225,7 @@ Class | Method | HTTP request | Description
 *TasksApi* | [**tasksUpdateTask**](docs/TasksApi.md#tasksupdatetask) | **PUT** /api/tasks/v1/Tasks/{taskId} | Update a task
 *TemplatesApi* | [**templateFolderAndFileClearRecycleBin**](docs/TemplatesApi.md#templatefolderandfileclearrecyclebin) | **DELETE** /api/rp/v1/Templates/{subscriptionId}/ClearRecycleBin | Delete all folders and files from recycle bin
 *TemplatesApi* | [**templateFolderAndFileCopyFiles**](docs/TemplatesApi.md#templatefolderandfilecopyfiles) | **POST** /api/rp/v1/Templates/{subscriptionId}/CopyFiles | Copy folders and files to a specified folder
+*TemplatesApi* | [**templateFolderAndFileCountRecycleBinFoldersAndFiles**](docs/TemplatesApi.md#templatefolderandfilecountrecyclebinfoldersandfiles) | **GET** /api/rp/v1/Templates/{subscriptionId}/CountRecycleBinFolderAndFiles | Count all folders and files from recycle bin
 *TemplatesApi* | [**templateFolderAndFileDeleteFiles**](docs/TemplatesApi.md#templatefolderandfiledeletefiles) | **POST** /api/rp/v1/Templates/{subscriptionId}/DeleteFiles | Delete folders and files
 *TemplatesApi* | [**templateFolderAndFileGetCount**](docs/TemplatesApi.md#templatefolderandfilegetcount) | **GET** /api/rp/v1/Templates/Folder/{id}/CountFolderAndFiles | Get count of files and folders what contains in a specified folder
 *TemplatesApi* | [**templateFolderAndFileGetFoldersAndFiles**](docs/TemplatesApi.md#templatefolderandfilegetfoldersandfiles) | **GET** /api/rp/v1/Templates/Folder/{id}/ListFolderAndFiles | Get all folders and files from specified folder
@@ -244,13 +255,16 @@ Class | Method | HTTP request | Description
 *TemplatesApi* | [**templateFoldersUpdatePermissions**](docs/TemplatesApi.md#templatefoldersupdatepermissions) | **POST** /api/rp/v1/Templates/{id}/permissions | Update permissions
 *TemplatesApi* | [**templateFoldersUpdateTags**](docs/TemplatesApi.md#templatefoldersupdatetags) | **PUT** /api/rp/v1/Templates/Folder/{id}/UpdateTags | Update tags
 *TemplatesApi* | [**templatesCopyFile**](docs/TemplatesApi.md#templatescopyfile) | **POST** /api/rp/v1/Templates/File/{id}/Copy/{folderId} | Copy file to a specified folder
+*TemplatesApi* | [**templatesCreateSharingKey**](docs/TemplatesApi.md#templatescreatesharingkey) | **POST** /api/rp/v1/Templates/File/{id}/sharingKey | Create a new key, that can be used to share access to a file  (You need Administrate.Anon permission to create a new key)
 *TemplatesApi* | [**templatesDeleteFile**](docs/TemplatesApi.md#templatesdeletefile) | **DELETE** /api/rp/v1/Templates/File/{id} | Delete specified file
+*TemplatesApi* | [**templatesDeleteSharingKey**](docs/TemplatesApi.md#templatesdeletesharingkey) | **DELETE** /api/rp/v1/Templates/File/{id}/sharingKey | Deletes a sharing key, making links, that utilizing it no longer work
 *TemplatesApi* | [**templatesExport**](docs/TemplatesApi.md#templatesexport) | **POST** /api/rp/v1/Templates/File/{id}/Export | Export specified report template to a specified format
 *TemplatesApi* | [**templatesGetFile**](docs/TemplatesApi.md#templatesgetfile) | **GET** /api/rp/v1/Templates/File/{id} | Get specified file
 *TemplatesApi* | [**templatesGetFileHistory**](docs/TemplatesApi.md#templatesgetfilehistory) | **GET** /api/rp/v1/Templates/File/{id}/History | Returns list of actions, performed on this file
 *TemplatesApi* | [**templatesGetFilesCount**](docs/TemplatesApi.md#templatesgetfilescount) | **GET** /api/rp/v1/Templates/Folder/{id}/CountFiles | Get count of files what contains in a specified folder
 *TemplatesApi* | [**templatesGetFilesList**](docs/TemplatesApi.md#templatesgetfileslist) | **GET** /api/rp/v1/Templates/Folder/{id}/ListFiles | Get all files from specified folder. <br />  User with Get Entity permission can access this method. <br />  The method will returns minimal infomration about the file: <br />  id, name, size, editedTime, createdTime, tags, status, statusReason.
 *TemplatesApi* | [**templatesGetPermissions**](docs/TemplatesApi.md#templatesgetpermissions) | **GET** /api/rp/v1/Templates/File/{id}/permissions | 
+*TemplatesApi* | [**templatesGetSharingKeys**](docs/TemplatesApi.md#templatesgetsharingkeys) | **GET** /api/rp/v1/Templates/File/{id}/sharingKeys | Returns all sharing keys, associated with the file
 *TemplatesApi* | [**templatesMoveFile**](docs/TemplatesApi.md#templatesmovefile) | **POST** /api/rp/v1/Templates/File/{id}/Move/{folderId} | Move file to a specified folder
 *TemplatesApi* | [**templatesMoveFileToBin**](docs/TemplatesApi.md#templatesmovefiletobin) | **DELETE** /api/rp/v1/Templates/File/{id}/ToBin | Move specified file to recycle bin
 *TemplatesApi* | [**templatesPrepare**](docs/TemplatesApi.md#templatesprepare) | **POST** /api/rp/v1/Templates/File/{id}/Prepare | Prepare specified template to report
@@ -300,6 +314,7 @@ Class | Method | HTTP request | Description
  - [cloud.fastreport.model.AppMixinsVM](docs/AppMixinsVM.md)
  - [cloud.fastreport.model.AuditActionVM](docs/AuditActionVM.md)
  - [cloud.fastreport.model.AuditActionsVM](docs/AuditActionsVM.md)
+ - [cloud.fastreport.model.AuditActiveStatsVM](docs/AuditActiveStatsVM.md)
  - [cloud.fastreport.model.AuditFilePropertyChangedVM](docs/AuditFilePropertyChangedVM.md)
  - [cloud.fastreport.model.AuditStatVM](docs/AuditStatVM.md)
  - [cloud.fastreport.model.AuditStatsVM](docs/AuditStatsVM.md)
@@ -328,6 +343,7 @@ Class | Method | HTTP request | Description
  - [cloud.fastreport.model.CreateExportTemplateTaskVM](docs/CreateExportTemplateTaskVM.md)
  - [cloud.fastreport.model.CreateFTPUploadTaskVM](docs/CreateFTPUploadTaskVM.md)
  - [cloud.fastreport.model.CreateFetchTaskVM](docs/CreateFetchTaskVM.md)
+ - [cloud.fastreport.model.CreateFileShareVM](docs/CreateFileShareVM.md)
  - [cloud.fastreport.model.CreateGroupAdminVM](docs/CreateGroupAdminVM.md)
  - [cloud.fastreport.model.CreateGroupVM](docs/CreateGroupVM.md)
  - [cloud.fastreport.model.CreateIfNotExistInternalVM](docs/CreateIfNotExistInternalVM.md)
@@ -337,6 +353,7 @@ Class | Method | HTTP request | Description
  - [cloud.fastreport.model.CreateSubscriptionPlanVM](docs/CreateSubscriptionPlanVM.md)
  - [cloud.fastreport.model.CreateSubscriptionVM](docs/CreateSubscriptionVM.md)
  - [cloud.fastreport.model.CreateTaskBaseVM](docs/CreateTaskBaseVM.md)
+ - [cloud.fastreport.model.CreateTaskEndVM](docs/CreateTaskEndVM.md)
  - [cloud.fastreport.model.CreateThumbnailReportTaskVM](docs/CreateThumbnailReportTaskVM.md)
  - [cloud.fastreport.model.CreateThumbnailTemplateTaskVM](docs/CreateThumbnailTemplateTaskVM.md)
  - [cloud.fastreport.model.CreateTransformTaskBaseVM](docs/CreateTransformTaskBaseVM.md)
@@ -348,9 +365,13 @@ Class | Method | HTTP request | Description
  - [cloud.fastreport.model.DataSourceDelete](docs/DataSourceDelete.md)
  - [cloud.fastreport.model.DataSourceExecute](docs/DataSourceExecute.md)
  - [cloud.fastreport.model.DataSourceGet](docs/DataSourceGet.md)
+ - [cloud.fastreport.model.DataSourceParameterTypeVM](docs/DataSourceParameterTypeVM.md)
+ - [cloud.fastreport.model.DataSourceParameterTypesVM](docs/DataSourceParameterTypesVM.md)
  - [cloud.fastreport.model.DataSourcePermissionCRUDVM](docs/DataSourcePermissionCRUDVM.md)
  - [cloud.fastreport.model.DataSourcePermissionsCRUDVM](docs/DataSourcePermissionsCRUDVM.md)
  - [cloud.fastreport.model.DataSourcePermissionsVM](docs/DataSourcePermissionsVM.md)
+ - [cloud.fastreport.model.DataSourceSelectCommandParameterVM](docs/DataSourceSelectCommandParameterVM.md)
+ - [cloud.fastreport.model.DataSourceSelectCommandVM](docs/DataSourceSelectCommandVM.md)
  - [cloud.fastreport.model.DataSourceSorting](docs/DataSourceSorting.md)
  - [cloud.fastreport.model.DataSourceStatus](docs/DataSourceStatus.md)
  - [cloud.fastreport.model.DataSourceUpdate](docs/DataSourceUpdate.md)
@@ -386,6 +407,8 @@ Class | Method | HTTP request | Description
  - [cloud.fastreport.model.FilePermissionsCRUDVM](docs/FilePermissionsCRUDVM.md)
  - [cloud.fastreport.model.FilePermissionsVM](docs/FilePermissionsVM.md)
  - [cloud.fastreport.model.FileRenameVM](docs/FileRenameVM.md)
+ - [cloud.fastreport.model.FileShareVM](docs/FileShareVM.md)
+ - [cloud.fastreport.model.FileSharingKeysVM](docs/FileSharingKeysVM.md)
  - [cloud.fastreport.model.FileSorting](docs/FileSorting.md)
  - [cloud.fastreport.model.FileStatus](docs/FileStatus.md)
  - [cloud.fastreport.model.FileStatusReason](docs/FileStatusReason.md)
@@ -483,6 +506,7 @@ Class | Method | HTTP request | Description
  - [cloud.fastreport.model.TaskBaseVM](docs/TaskBaseVM.md)
  - [cloud.fastreport.model.TaskCreate](docs/TaskCreate.md)
  - [cloud.fastreport.model.TaskDelete](docs/TaskDelete.md)
+ - [cloud.fastreport.model.TaskEnd](docs/TaskEnd.md)
  - [cloud.fastreport.model.TaskExecute](docs/TaskExecute.md)
  - [cloud.fastreport.model.TaskGet](docs/TaskGet.md)
  - [cloud.fastreport.model.TaskIdsVM](docs/TaskIdsVM.md)
@@ -510,6 +534,7 @@ Class | Method | HTTP request | Description
  - [cloud.fastreport.model.UpdateContentInternalVM](docs/UpdateContentInternalVM.md)
  - [cloud.fastreport.model.UpdateDataSourceConnectionStringVM](docs/UpdateDataSourceConnectionStringVM.md)
  - [cloud.fastreport.model.UpdateDataSourcePermissionsVM](docs/UpdateDataSourcePermissionsVM.md)
+ - [cloud.fastreport.model.UpdateDataSourceSelectCommandsVM](docs/UpdateDataSourceSelectCommandsVM.md)
  - [cloud.fastreport.model.UpdateDataSourceSubscriptionVM](docs/UpdateDataSourceSubscriptionVM.md)
  - [cloud.fastreport.model.UpdateDataSourceVM](docs/UpdateDataSourceVM.md)
  - [cloud.fastreport.model.UpdateDataVM](docs/UpdateDataVM.md)

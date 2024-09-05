@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**exportFolderAndFileClearRecycleBin**](ExportsApi.md#exportFolderAndFileClearRecycleBin) | **DELETE** /api/rp/v1/Exports/{subscriptionId}/ClearRecycleBin | Delete all folders and files from recycle bin
 [**exportFolderAndFileCopyFiles**](ExportsApi.md#exportFolderAndFileCopyFiles) | **POST** /api/rp/v1/Exports/{subscriptionId}/CopyFiles | Copy folders and files to a specified folder
+[**exportFolderAndFileCountRecycleBinFoldersAndFiles**](ExportsApi.md#exportFolderAndFileCountRecycleBinFoldersAndFiles) | **GET** /api/rp/v1/Exports/{subscriptionId}/CountRecycleBinFolderAndFiles | Count all folders and files from recycle bin
 [**exportFolderAndFileDeleteFiles**](ExportsApi.md#exportFolderAndFileDeleteFiles) | **POST** /api/rp/v1/Exports/{subscriptionId}/DeleteFiles | Delete folders and files
 [**exportFolderAndFileGetCount**](ExportsApi.md#exportFolderAndFileGetCount) | **GET** /api/rp/v1/Exports/Folder/{id}/CountFolderAndFiles | Get count of files and folders what contains in a specified folder
 [**exportFolderAndFileGetFoldersAndFiles**](ExportsApi.md#exportFolderAndFileGetFoldersAndFiles) | **GET** /api/rp/v1/Exports/Folder/{id}/ListFolderAndFiles | Get all folders and files from specified folder
@@ -33,12 +34,15 @@ Method | HTTP request | Description
 [**exportFoldersUpdatePermissions**](ExportsApi.md#exportFoldersUpdatePermissions) | **POST** /api/rp/v1/Exports/{id}/permissions | Update permissions
 [**exportFoldersUpdateTags**](ExportsApi.md#exportFoldersUpdateTags) | **PUT** /api/rp/v1/Exports/Folder/{id}/UpdateTags | Update tags
 [**exportsCopyFile**](ExportsApi.md#exportsCopyFile) | **POST** /api/rp/v1/Exports/File/{id}/Copy/{folderId} | Copy file to a specified folder
+[**exportsCreateSharingKey**](ExportsApi.md#exportsCreateSharingKey) | **POST** /api/rp/v1/Exports/File/{id}/sharingKey | Create a new key, that can be used to share access to a file  (You need Administrate.Anon permission to create a new key)
 [**exportsDeleteFile**](ExportsApi.md#exportsDeleteFile) | **DELETE** /api/rp/v1/Exports/File/{id} | Delete specified file
+[**exportsDeleteSharingKey**](ExportsApi.md#exportsDeleteSharingKey) | **DELETE** /api/rp/v1/Exports/File/{id}/sharingKey | Deletes a sharing key, making links, that utilizing it no longer work
 [**exportsGetFile**](ExportsApi.md#exportsGetFile) | **GET** /api/rp/v1/Exports/File/{id} | Get export by specified id
 [**exportsGetFileHistory**](ExportsApi.md#exportsGetFileHistory) | **GET** /api/rp/v1/Exports/File/{id}/History | Returns list of actions, performed on this file
 [**exportsGetFilesCount**](ExportsApi.md#exportsGetFilesCount) | **GET** /api/rp/v1/Exports/Folder/{id}/CountFiles | Get count of files what contains in a specified folder
 [**exportsGetFilesList**](ExportsApi.md#exportsGetFilesList) | **GET** /api/rp/v1/Exports/Folder/{id}/ListFiles | Get all files from specified folder. &lt;br /&gt;  User with Get Entity permission can access this method. &lt;br /&gt;  The method will returns minimal infomration about the file: &lt;br /&gt;  id, name, size, editedTime, createdTime, tags, status, statusReason.
 [**exportsGetPermissions**](ExportsApi.md#exportsGetPermissions) | **GET** /api/rp/v1/Exports/File/{id}/permissions | 
+[**exportsGetSharingKeys**](ExportsApi.md#exportsGetSharingKeys) | **GET** /api/rp/v1/Exports/File/{id}/sharingKeys | Returns all sharing keys, associated with the file
 [**exportsMoveFile**](ExportsApi.md#exportsMoveFile) | **POST** /api/rp/v1/Exports/File/{id}/Move/{folderId} | Move file to a specified folder
 [**exportsMoveFileToBin**](ExportsApi.md#exportsMoveFileToBin) | **DELETE** /api/rp/v1/Exports/File/{id}/ToBin | Move specified file to recycle bin
 [**exportsRecoverFile**](ExportsApi.md#exportsRecoverFile) | **POST** /api/rp/v1/Exports/File/{id}/Recover | Recover specified file from bin
@@ -150,6 +154,62 @@ Configure JWT:
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a id="exportFolderAndFileCountRecycleBinFoldersAndFiles"></a>
+# **exportFolderAndFileCountRecycleBinFoldersAndFiles**
+> CountVM exportFolderAndFileCountRecycleBinFoldersAndFiles(subscriptionId, searchPattern, useRegex)
+
+Count all folders and files from recycle bin
+
+User with a Get DeletedFiles permission can access this method.
+
+### Example
+```kotlin
+// Import classes:
+//import org.openapitools.client.infrastructure.*
+//import cloud.fastreport.model.*
+
+val apiInstance = ExportsApi()
+val subscriptionId : kotlin.String = subscriptionId_example // kotlin.String | subscription id
+val searchPattern : kotlin.String = searchPattern_example // kotlin.String | 
+val useRegex : kotlin.Boolean = true // kotlin.Boolean | 
+try {
+    val result : CountVM = apiInstance.exportFolderAndFileCountRecycleBinFoldersAndFiles(subscriptionId, searchPattern, useRegex)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling ExportsApi#exportFolderAndFileCountRecycleBinFoldersAndFiles")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling ExportsApi#exportFolderAndFileCountRecycleBinFoldersAndFiles")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subscriptionId** | **kotlin.String**| subscription id |
+ **searchPattern** | **kotlin.String**|  | [optional] [default to &quot;&quot;]
+ **useRegex** | **kotlin.Boolean**|  | [optional] [default to false]
+
+### Return type
+
+[**CountVM**](CountVM.md)
+
+### Authorization
+
+
+Configure ApiKey:
+    ApiClient.username = ""
+    ApiClient.password = ""
+Configure JWT:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a id="exportFolderAndFileDeleteFiles"></a>
@@ -302,7 +362,7 @@ Name | Type | Description  | Notes
  **id** | **kotlin.String**| folder id |
  **skip** | **kotlin.Int**| number of folder and files, that have to be skipped | [optional] [default to 0]
  **take** | **kotlin.Int**| number of folder and files, that have to be returned | [optional] [default to 10]
- **orderBy** | [**FileSorting**](.md)| indicates a field to sort by | [optional] [enum: None, CreatedTime, EditedTime, Size, Name]
+ **orderBy** | [**FileSorting**](.md)| indicates a field to sort by | [optional] [enum: CreatedTime, EditedTime, Size, Name]
  **desc** | **kotlin.Boolean**| indicates if sorting is descending | [optional] [default to false]
  **searchPattern** | **kotlin.String**|  | [optional] [default to &quot;&quot;]
  **useRegex** | **kotlin.Boolean**|  | [optional] [default to false]
@@ -366,7 +426,7 @@ Name | Type | Description  | Notes
  **subscriptionId** | **kotlin.String**| subscription id |
  **skip** | **kotlin.Int**| number of folder and files, that have to be skipped | [optional] [default to 0]
  **take** | **kotlin.Int**| number of folder and files, that have to be returned | [optional] [default to 10]
- **orderBy** | [**FileSorting**](.md)| indicates a field to sort by | [optional] [enum: None, CreatedTime, EditedTime, Size, Name]
+ **orderBy** | [**FileSorting**](.md)| indicates a field to sort by | [optional] [enum: CreatedTime, EditedTime, Size, Name]
  **desc** | **kotlin.Boolean**| indicates if sorting is descending | [optional] [default to false]
  **searchPattern** | **kotlin.String**|  | [optional] [default to &quot;&quot;]
  **useRegex** | **kotlin.Boolean**|  | [optional] [default to false]
@@ -901,7 +961,7 @@ Name | Type | Description  | Notes
  **id** | **kotlin.String**| folder id |
  **skip** | **kotlin.Int**| number of files, that have to be skipped | [optional] [default to 0]
  **take** | **kotlin.Int**| number of files, that have to be returned | [optional] [default to 10]
- **orderBy** | [**FileSorting**](.md)|  | [optional] [enum: None, CreatedTime, EditedTime, Size, Name]
+ **orderBy** | [**FileSorting**](.md)|  | [optional] [enum: CreatedTime, EditedTime, Size, Name]
  **desc** | **kotlin.Boolean**|  | [optional] [default to false]
  **searchPattern** | **kotlin.String**|  | [optional] [default to &quot;&quot;]
  **useRegex** | **kotlin.Boolean**|  | [optional] [default to false]
@@ -1611,6 +1671,58 @@ Configure JWT:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a id="exportsCreateSharingKey"></a>
+# **exportsCreateSharingKey**
+> FileSharingKeysVM exportsCreateSharingKey(id, createFileShareVM)
+
+Create a new key, that can be used to share access to a file  (You need Administrate.Anon permission to create a new key)
+
+### Example
+```kotlin
+// Import classes:
+//import org.openapitools.client.infrastructure.*
+//import cloud.fastreport.model.*
+
+val apiInstance = ExportsApi()
+val id : kotlin.String = id_example // kotlin.String | file id
+val createFileShareVM : CreateFileShareVM =  // CreateFileShareVM | parameters for sharing key creation
+try {
+    val result : FileSharingKeysVM = apiInstance.exportsCreateSharingKey(id, createFileShareVM)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling ExportsApi#exportsCreateSharingKey")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling ExportsApi#exportsCreateSharingKey")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **kotlin.String**| file id |
+ **createFileShareVM** | [**CreateFileShareVM**](CreateFileShareVM.md)| parameters for sharing key creation | [optional]
+
+### Return type
+
+[**FileSharingKeysVM**](FileSharingKeysVM.md)
+
+### Authorization
+
+
+Configure ApiKey:
+    ApiClient.username = ""
+    ApiClient.password = ""
+Configure JWT:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a id="exportsDeleteFile"></a>
 # **exportsDeleteFile**
 > exportsDeleteFile(id)
@@ -1643,6 +1755,57 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **kotlin.String**| file id |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+
+Configure ApiKey:
+    ApiClient.username = ""
+    ApiClient.password = ""
+Configure JWT:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a id="exportsDeleteSharingKey"></a>
+# **exportsDeleteSharingKey**
+> exportsDeleteSharingKey(id, key)
+
+Deletes a sharing key, making links, that utilizing it no longer work
+
+### Example
+```kotlin
+// Import classes:
+//import org.openapitools.client.infrastructure.*
+//import cloud.fastreport.model.*
+
+val apiInstance = ExportsApi()
+val id : kotlin.String = id_example // kotlin.String | file id
+val key : kotlin.String = key_example // kotlin.String | key to delete
+try {
+    apiInstance.exportsDeleteSharingKey(id, key)
+} catch (e: ClientException) {
+    println("4xx response calling ExportsApi#exportsDeleteSharingKey")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling ExportsApi#exportsDeleteSharingKey")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **kotlin.String**| file id |
+ **key** | **kotlin.String**| key to delete |
 
 ### Return type
 
@@ -1858,7 +2021,7 @@ Name | Type | Description  | Notes
  **skip** | **kotlin.Int**| number of files, that have to be skipped | [optional] [default to 0]
  **take** | **kotlin.Int**| number of files, that have to be returned | [optional] [default to 10]
  **searchPattern** | **kotlin.String**|  | [optional]
- **orderBy** | [**FileSorting**](.md)|  | [optional] [enum: None, CreatedTime, EditedTime, Size, Name]
+ **orderBy** | [**FileSorting**](.md)|  | [optional] [enum: CreatedTime, EditedTime, Size, Name]
  **desc** | **kotlin.Boolean**|  | [optional] [default to false]
  **useRegex** | **kotlin.Boolean**|  | [optional] [default to false]
 
@@ -1915,6 +2078,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FilePermissionsVM**](FilePermissionsVM.md)
+
+### Authorization
+
+
+Configure ApiKey:
+    ApiClient.username = ""
+    ApiClient.password = ""
+Configure JWT:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a id="exportsGetSharingKeys"></a>
+# **exportsGetSharingKeys**
+> FileSharingKeysVM exportsGetSharingKeys(id)
+
+Returns all sharing keys, associated with the file
+
+### Example
+```kotlin
+// Import classes:
+//import org.openapitools.client.infrastructure.*
+//import cloud.fastreport.model.*
+
+val apiInstance = ExportsApi()
+val id : kotlin.String = id_example // kotlin.String | file id
+try {
+    val result : FileSharingKeysVM = apiInstance.exportsGetSharingKeys(id)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling ExportsApi#exportsGetSharingKeys")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling ExportsApi#exportsGetSharingKeys")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **kotlin.String**| file id |
+
+### Return type
+
+[**FileSharingKeysVM**](FileSharingKeysVM.md)
 
 ### Authorization
 

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **dollarT** | **kotlin.String** |  | 
 **name** | **kotlin.String** |  |  [optional]
 **connectionType** | [**DataSourceConnectionType**](DataSourceConnectionType.md) |  |  [optional]
+**selectCommands** | [**kotlin.collections.List&lt;DataSourceSelectCommandVM&gt;**](DataSourceSelectCommandVM.md) |  |  [optional]
 
 
 

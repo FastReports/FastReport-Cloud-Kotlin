@@ -17,6 +17,7 @@ package cloud.fastreport.model
 
 import cloud.fastreport.model.CloudBaseVM
 import cloud.fastreport.model.DataSourceConnectionType
+import cloud.fastreport.model.DataSourceSelectCommandVM
 import cloud.fastreport.model.DataSourceStatus
 
 import com.squareup.moshi.Json
@@ -57,5 +58,7 @@ interface DataSourceVM : CloudBaseVM {
     val status: DataSourceStatus?
     @Json(name = "errorMessage")
     val errorMessage: kotlin.String?
+    @Json(name = "selectCommands")
+    val selectCommands: kotlin.collections.List<DataSourceSelectCommandVM>?
 }
 

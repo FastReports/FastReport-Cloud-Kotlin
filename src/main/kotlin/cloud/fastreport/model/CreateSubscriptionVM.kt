@@ -41,5 +41,7 @@ interface CreateSubscriptionVM : CloudBaseVM {
     val start: java.time.OffsetDateTime?
     @Json(name = "end")
     val end: java.time.OffsetDateTime?
+    @Json(name = "tags")
+    val tags: kotlin.collections.List<kotlin.String>?
 }
 

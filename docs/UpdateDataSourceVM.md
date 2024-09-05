@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **name** | **kotlin.String** |  |  [optional]
 **subscriptionId** | **kotlin.String** |  |  [optional]
 **connectionString** | **kotlin.String** |  |  [optional]
+**selectCommands** | [**kotlin.collections.List&lt;DataSourceSelectCommandVM&gt;**](DataSourceSelectCommandVM.md) |  |  [optional]
 
 
 

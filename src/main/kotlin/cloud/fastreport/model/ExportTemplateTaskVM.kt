@@ -19,6 +19,7 @@ import cloud.fastreport.model.ExportFormat
 import cloud.fastreport.model.ExportReportTaskVM
 import cloud.fastreport.model.InputFileVM
 import cloud.fastreport.model.OutputFileVM
+import cloud.fastreport.model.TaskEnd
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -35,8 +36,8 @@ import com.squareup.moshi.JsonClass
  * @param outputFile 
  * @param transportIds 
  * @param cronExpression 
- * @param delayedRunTime 
- * @param delayedWasRunTime 
+ * @param startsOn 
+ * @param ends 
  * @param id 
  * @param name 
  * @param recurrentRunTime 

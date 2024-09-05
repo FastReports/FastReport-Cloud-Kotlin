@@ -22,14 +22,11 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * Values: none,createdTime,editedTime,name
+ * Values: createdTime,editedTime,name
  */
 
 @JsonClass(generateAdapter = false)
 enum class DataSourceSorting(val value: kotlin.String) {
-
-    @Json(name = "None")
-    none("None"),
 
     @Json(name = "CreatedTime")
     createdTime("CreatedTime"),

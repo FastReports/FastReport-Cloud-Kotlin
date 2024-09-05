@@ -20,6 +20,8 @@ import okhttp3.OkHttpClient
 import okhttp3.HttpUrl
 
 import cloud.fastreport.model.CreateDataSourceVM
+import cloud.fastreport.model.DataSourceConnectionType
+import cloud.fastreport.model.DataSourceParameterTypesVM
 import cloud.fastreport.model.DataSourcePermissionsVM
 import cloud.fastreport.model.DataSourceSorting
 import cloud.fastreport.model.DataSourceVM
@@ -28,6 +30,7 @@ import cloud.fastreport.model.ProblemDetails
 import cloud.fastreport.model.RenameDataSourceVM
 import cloud.fastreport.model.UpdateDataSourceConnectionStringVM
 import cloud.fastreport.model.UpdateDataSourcePermissionsVM
+import cloud.fastreport.model.UpdateDataSourceSelectCommandsVM
 import cloud.fastreport.model.UpdateDataSourceSubscriptionVM
 
 import com.squareup.moshi.Json
@@ -507,6 +510,77 @@ class DataSourcesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
     }
 
     /**
+     * Get data source parameter DataType&#39;s
+     * 
+     * @param dataSourceType data source type (MsSql, MySql, etc.)
+     * @return DataSourceParameterTypesVM
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun dataSourcesGetParameterTypes(dataSourceType: DataSourceConnectionType) : DataSourceParameterTypesVM {
+        val localVarResponse = dataSourcesGetParameterTypesWithHttpInfo(dataSourceType = dataSourceType)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as DataSourceParameterTypesVM
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Get data source parameter DataType&#39;s
+     * 
+     * @param dataSourceType data source type (MsSql, MySql, etc.)
+     * @return ApiResponse<DataSourceParameterTypesVM?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun dataSourcesGetParameterTypesWithHttpInfo(dataSourceType: DataSourceConnectionType) : ApiResponse<DataSourceParameterTypesVM?> {
+        val localVariableConfig = dataSourcesGetParameterTypesRequestConfig(dataSourceType = dataSourceType)
+
+        return request<Unit, DataSourceParameterTypesVM>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation dataSourcesGetParameterTypes
+     *
+     * @param dataSourceType data source type (MsSql, MySql, etc.)
+     * @return RequestConfig
+     */
+    fun dataSourcesGetParameterTypesRequestConfig(dataSourceType: DataSourceConnectionType) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/api/data/v1/DataSources/parameterTypes/{dataSourceType}".replace("{"+"dataSourceType"+"}", encodeURIComponent(dataSourceType.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
      * Get all Data source permissions
      * 
      * @param id data source id
@@ -719,7 +793,7 @@ class DataSourcesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
 
         return RequestConfig(
             method = RequestMethod.PUT,
-            path = "/api/data/v1/DataSources/{id}/ConnectionString".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            path = "/api/data/v1/DataSources/{id}/connectionString".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -793,6 +867,81 @@ class DataSourcesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
         return RequestConfig(
             method = RequestMethod.POST,
             path = "/api/data/v1/DataSources/{id}/permissions".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * Update data source&#39;s select commands by id
+     * 
+     * @param id data source id
+     * @param updateDataSourceSelectCommandsVM update viewmodel (optional)
+     * @return DataSourceVM
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun dataSourcesUpdateSelectCommands(id: kotlin.String, updateDataSourceSelectCommandsVM: UpdateDataSourceSelectCommandsVM? = null) : DataSourceVM {
+        val localVarResponse = dataSourcesUpdateSelectCommandsWithHttpInfo(id = id, updateDataSourceSelectCommandsVM = updateDataSourceSelectCommandsVM)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as DataSourceVM
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Update data source&#39;s select commands by id
+     * 
+     * @param id data source id
+     * @param updateDataSourceSelectCommandsVM update viewmodel (optional)
+     * @return ApiResponse<DataSourceVM?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun dataSourcesUpdateSelectCommandsWithHttpInfo(id: kotlin.String, updateDataSourceSelectCommandsVM: UpdateDataSourceSelectCommandsVM?) : ApiResponse<DataSourceVM?> {
+        val localVariableConfig = dataSourcesUpdateSelectCommandsRequestConfig(id = id, updateDataSourceSelectCommandsVM = updateDataSourceSelectCommandsVM)
+
+        return request<UpdateDataSourceSelectCommandsVM, DataSourceVM>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation dataSourcesUpdateSelectCommands
+     *
+     * @param id data source id
+     * @param updateDataSourceSelectCommandsVM update viewmodel (optional)
+     * @return RequestConfig
+     */
+    fun dataSourcesUpdateSelectCommandsRequestConfig(id: kotlin.String, updateDataSourceSelectCommandsVM: UpdateDataSourceSelectCommandsVM?) : RequestConfig<UpdateDataSourceSelectCommandsVM> {
+        val localVariableBody = updateDataSourceSelectCommandsVM
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.PUT,
+            path = "/api/data/v1/DataSources/{id}/selectCommands".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,

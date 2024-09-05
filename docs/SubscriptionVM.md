@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **templatesFolder** | [**SubscriptionFolder**](SubscriptionFolder.md) |  |  [optional]
 **reportsFolder** | [**SubscriptionFolder**](SubscriptionFolder.md) |  |  [optional]
 **exportsFolder** | [**SubscriptionFolder**](SubscriptionFolder.md) |  |  [optional]
+**tags** | **kotlin.collections.List&lt;kotlin.String&gt;** |  |  [optional]
 
 
 

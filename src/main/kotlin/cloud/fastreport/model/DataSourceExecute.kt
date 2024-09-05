@@ -22,7 +22,7 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * Values: _0,minus1
+ * Values: _0,_1,minus1
  */
 
 @JsonClass(generateAdapter = false)
@@ -30,6 +30,9 @@ enum class DataSourceExecute(val value: kotlin.Int) {
 
     @Json(name = "0")
     _0(0),
+
+    @Json(name = "1")
+    _1(1),
 
     @Json(name = "-1")
     minus1(-1);

@@ -28,6 +28,7 @@ docs/ApiKeysVM.md
 docs/AppMixinsVM.md
 docs/AuditActionVM.md
 docs/AuditActionsVM.md
+docs/AuditActiveStatsVM.md
 docs/AuditFilePropertyChangedVM.md
 docs/AuditStatVM.md
 docs/AuditStatsVM.md
@@ -59,6 +60,7 @@ docs/CreateExportReportTaskVM.md
 docs/CreateExportTemplateTaskVM.md
 docs/CreateFTPUploadTaskVM.md
 docs/CreateFetchTaskVM.md
+docs/CreateFileShareVM.md
 docs/CreateGroupAdminVM.md
 docs/CreateGroupVM.md
 docs/CreateIfNotExistInternalVM.md
@@ -68,6 +70,7 @@ docs/CreateSubscriptionPeriodVM.md
 docs/CreateSubscriptionPlanVM.md
 docs/CreateSubscriptionVM.md
 docs/CreateTaskBaseVM.md
+docs/CreateTaskEndVM.md
 docs/CreateThumbnailReportTaskVM.md
 docs/CreateThumbnailTemplateTaskVM.md
 docs/CreateTransformTaskBaseVM.md
@@ -79,9 +82,13 @@ docs/DataSourceCreate.md
 docs/DataSourceDelete.md
 docs/DataSourceExecute.md
 docs/DataSourceGet.md
+docs/DataSourceParameterTypeVM.md
+docs/DataSourceParameterTypesVM.md
 docs/DataSourcePermissionCRUDVM.md
 docs/DataSourcePermissionsCRUDVM.md
 docs/DataSourcePermissionsVM.md
+docs/DataSourceSelectCommandParameterVM.md
+docs/DataSourceSelectCommandVM.md
 docs/DataSourceSorting.md
 docs/DataSourceStatus.md
 docs/DataSourceUpdate.md
@@ -120,6 +127,8 @@ docs/FilePermissionCRUDVM.md
 docs/FilePermissionsCRUDVM.md
 docs/FilePermissionsVM.md
 docs/FileRenameVM.md
+docs/FileShareVM.md
+docs/FileSharingKeysVM.md
 docs/FileSorting.md
 docs/FileStatus.md
 docs/FileStatusReason.md
@@ -226,6 +235,7 @@ docs/TaskAdministrate.md
 docs/TaskBaseVM.md
 docs/TaskCreate.md
 docs/TaskDelete.md
+docs/TaskEnd.md
 docs/TaskExecute.md
 docs/TaskGet.md
 docs/TaskIdsVM.md
@@ -255,6 +265,7 @@ docs/UpdateContactVM.md
 docs/UpdateContentInternalVM.md
 docs/UpdateDataSourceConnectionStringVM.md
 docs/UpdateDataSourcePermissionsVM.md
+docs/UpdateDataSourceSelectCommandsVM.md
 docs/UpdateDataSourceSubscriptionVM.md
 docs/UpdateDataSourceVM.md
 docs/UpdateDataVM.md
@@ -344,6 +355,7 @@ src/main/kotlin/cloud/fastreport/model/ApiKeysVM.kt
 src/main/kotlin/cloud/fastreport/model/AppMixinsVM.kt
 src/main/kotlin/cloud/fastreport/model/AuditActionVM.kt
 src/main/kotlin/cloud/fastreport/model/AuditActionsVM.kt
+src/main/kotlin/cloud/fastreport/model/AuditActiveStatsVM.kt
 src/main/kotlin/cloud/fastreport/model/AuditFilePropertyChangedVM.kt
 src/main/kotlin/cloud/fastreport/model/AuditStatVM.kt
 src/main/kotlin/cloud/fastreport/model/AuditStatsVM.kt
@@ -372,6 +384,7 @@ src/main/kotlin/cloud/fastreport/model/CreateExportReportTaskVM.kt
 src/main/kotlin/cloud/fastreport/model/CreateExportTemplateTaskVM.kt
 src/main/kotlin/cloud/fastreport/model/CreateFTPUploadTaskVM.kt
 src/main/kotlin/cloud/fastreport/model/CreateFetchTaskVM.kt
+src/main/kotlin/cloud/fastreport/model/CreateFileShareVM.kt
 src/main/kotlin/cloud/fastreport/model/CreateGroupAdminVM.kt
 src/main/kotlin/cloud/fastreport/model/CreateGroupVM.kt
 src/main/kotlin/cloud/fastreport/model/CreateIfNotExistInternalVM.kt
@@ -381,6 +394,7 @@ src/main/kotlin/cloud/fastreport/model/CreateSubscriptionPeriodVM.kt
 src/main/kotlin/cloud/fastreport/model/CreateSubscriptionPlanVM.kt
 src/main/kotlin/cloud/fastreport/model/CreateSubscriptionVM.kt
 src/main/kotlin/cloud/fastreport/model/CreateTaskBaseVM.kt
+src/main/kotlin/cloud/fastreport/model/CreateTaskEndVM.kt
 src/main/kotlin/cloud/fastreport/model/CreateThumbnailReportTaskVM.kt
 src/main/kotlin/cloud/fastreport/model/CreateThumbnailTemplateTaskVM.kt
 src/main/kotlin/cloud/fastreport/model/CreateTransformTaskBaseVM.kt
@@ -392,9 +406,13 @@ src/main/kotlin/cloud/fastreport/model/DataSourceCreate.kt
 src/main/kotlin/cloud/fastreport/model/DataSourceDelete.kt
 src/main/kotlin/cloud/fastreport/model/DataSourceExecute.kt
 src/main/kotlin/cloud/fastreport/model/DataSourceGet.kt
+src/main/kotlin/cloud/fastreport/model/DataSourceParameterTypeVM.kt
+src/main/kotlin/cloud/fastreport/model/DataSourceParameterTypesVM.kt
 src/main/kotlin/cloud/fastreport/model/DataSourcePermissionCRUDVM.kt
 src/main/kotlin/cloud/fastreport/model/DataSourcePermissionsCRUDVM.kt
 src/main/kotlin/cloud/fastreport/model/DataSourcePermissionsVM.kt
+src/main/kotlin/cloud/fastreport/model/DataSourceSelectCommandParameterVM.kt
+src/main/kotlin/cloud/fastreport/model/DataSourceSelectCommandVM.kt
 src/main/kotlin/cloud/fastreport/model/DataSourceSorting.kt
 src/main/kotlin/cloud/fastreport/model/DataSourceStatus.kt
 src/main/kotlin/cloud/fastreport/model/DataSourceUpdate.kt
@@ -430,6 +448,8 @@ src/main/kotlin/cloud/fastreport/model/FilePermissionCRUDVM.kt
 src/main/kotlin/cloud/fastreport/model/FilePermissionsCRUDVM.kt
 src/main/kotlin/cloud/fastreport/model/FilePermissionsVM.kt
 src/main/kotlin/cloud/fastreport/model/FileRenameVM.kt
+src/main/kotlin/cloud/fastreport/model/FileShareVM.kt
+src/main/kotlin/cloud/fastreport/model/FileSharingKeysVM.kt
 src/main/kotlin/cloud/fastreport/model/FileSorting.kt
 src/main/kotlin/cloud/fastreport/model/FileStatus.kt
 src/main/kotlin/cloud/fastreport/model/FileStatusReason.kt
@@ -527,6 +547,7 @@ src/main/kotlin/cloud/fastreport/model/TaskAdministrate.kt
 src/main/kotlin/cloud/fastreport/model/TaskBaseVM.kt
 src/main/kotlin/cloud/fastreport/model/TaskCreate.kt
 src/main/kotlin/cloud/fastreport/model/TaskDelete.kt
+src/main/kotlin/cloud/fastreport/model/TaskEnd.kt
 src/main/kotlin/cloud/fastreport/model/TaskExecute.kt
 src/main/kotlin/cloud/fastreport/model/TaskGet.kt
 src/main/kotlin/cloud/fastreport/model/TaskIdsVM.kt
@@ -554,6 +575,7 @@ src/main/kotlin/cloud/fastreport/model/UpdateContactVM.kt
 src/main/kotlin/cloud/fastreport/model/UpdateContentInternalVM.kt
 src/main/kotlin/cloud/fastreport/model/UpdateDataSourceConnectionStringVM.kt
 src/main/kotlin/cloud/fastreport/model/UpdateDataSourcePermissionsVM.kt
+src/main/kotlin/cloud/fastreport/model/UpdateDataSourceSelectCommandsVM.kt
 src/main/kotlin/cloud/fastreport/model/UpdateDataSourceSubscriptionVM.kt
 src/main/kotlin/cloud/fastreport/model/UpdateDataSourceVM.kt
 src/main/kotlin/cloud/fastreport/model/UpdateDataVM.kt

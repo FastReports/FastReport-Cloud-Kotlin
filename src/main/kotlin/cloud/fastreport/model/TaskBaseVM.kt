@@ -16,6 +16,7 @@
 package cloud.fastreport.model
 
 import cloud.fastreport.model.CloudBaseVM
+import cloud.fastreport.model.TaskEnd
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -33,10 +34,10 @@ interface TaskBaseVM : CloudBaseVM {
     override val dollarT: kotlin.String
     @Json(name = "cronExpression")
     val cronExpression: kotlin.String?
-    @Json(name = "delayedRunTime")
-    val delayedRunTime: java.time.OffsetDateTime?
-    @Json(name = "delayedWasRunTime")
-    val delayedWasRunTime: java.time.OffsetDateTime?
+    @Json(name = "startsOn")
+    val startsOn: java.time.OffsetDateTime?
+    @Json(name = "ends")
+    val ends: TaskEnd?
     @Json(name = "id")
     val id: kotlin.String?
     @Json(name = "name")

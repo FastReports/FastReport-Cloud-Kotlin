@@ -36,6 +36,8 @@ interface UpdateSubscriptionVM : CloudBaseVM {
     val name: kotlin.String?
     @Json(name = "locale")
     val locale: kotlin.String?
+    @Json(name = "tags")
+    val tags: kotlin.collections.List<kotlin.String>?
     @Json(name = "defaultPermissions")
     val defaultPermissions: DefaultPermissionsVM?
 }

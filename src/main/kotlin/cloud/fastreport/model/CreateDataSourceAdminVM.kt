@@ -17,6 +17,7 @@ package cloud.fastreport.model
 
 import cloud.fastreport.model.CreateDataSourceVM
 import cloud.fastreport.model.DataSourceConnectionType
+import cloud.fastreport.model.DataSourceSelectCommandVM
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -29,6 +30,7 @@ import com.squareup.moshi.JsonClass
  * @param dollarT 
  * @param name 
  * @param connectionType 
+ * @param selectCommands 
  */
 
 

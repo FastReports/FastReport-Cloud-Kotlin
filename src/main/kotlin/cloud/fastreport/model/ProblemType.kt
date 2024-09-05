@@ -22,7 +22,7 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * Values: anonPermissions,unrelatedFiles,otherWithoutGet,deadSubInUser,emptySub,lostFileChunks,wrongSubscripitonSizes,filesWithoutChunks
+ * Values: anonPermissions,unrelatedFiles,otherWithoutGet,deadSubInUser,emptySub,lostFileChunks,wrongSubscripitonSizes,filesWithoutChunks,filesWithDeletedParents
  */
 
 @JsonClass(generateAdapter = false)
@@ -50,7 +50,10 @@ enum class ProblemType(val value: kotlin.String) {
     wrongSubscripitonSizes("WrongSubscripitonSizes"),
 
     @Json(name = "FilesWithoutChunks")
-    filesWithoutChunks("FilesWithoutChunks");
+    filesWithoutChunks("FilesWithoutChunks"),
+
+    @Json(name = "FilesWithDeletedParents")
+    filesWithDeletedParents("FilesWithDeletedParents");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

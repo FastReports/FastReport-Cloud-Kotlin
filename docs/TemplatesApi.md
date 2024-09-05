@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**templateFolderAndFileClearRecycleBin**](TemplatesApi.md#templateFolderAndFileClearRecycleBin) | **DELETE** /api/rp/v1/Templates/{subscriptionId}/ClearRecycleBin | Delete all folders and files from recycle bin
 [**templateFolderAndFileCopyFiles**](TemplatesApi.md#templateFolderAndFileCopyFiles) | **POST** /api/rp/v1/Templates/{subscriptionId}/CopyFiles | Copy folders and files to a specified folder
+[**templateFolderAndFileCountRecycleBinFoldersAndFiles**](TemplatesApi.md#templateFolderAndFileCountRecycleBinFoldersAndFiles) | **GET** /api/rp/v1/Templates/{subscriptionId}/CountRecycleBinFolderAndFiles | Count all folders and files from recycle bin
 [**templateFolderAndFileDeleteFiles**](TemplatesApi.md#templateFolderAndFileDeleteFiles) | **POST** /api/rp/v1/Templates/{subscriptionId}/DeleteFiles | Delete folders and files
 [**templateFolderAndFileGetCount**](TemplatesApi.md#templateFolderAndFileGetCount) | **GET** /api/rp/v1/Templates/Folder/{id}/CountFolderAndFiles | Get count of files and folders what contains in a specified folder
 [**templateFolderAndFileGetFoldersAndFiles**](TemplatesApi.md#templateFolderAndFileGetFoldersAndFiles) | **GET** /api/rp/v1/Templates/Folder/{id}/ListFolderAndFiles | Get all folders and files from specified folder
@@ -35,13 +36,16 @@ Method | HTTP request | Description
 [**templateFoldersUpdatePermissions**](TemplatesApi.md#templateFoldersUpdatePermissions) | **POST** /api/rp/v1/Templates/{id}/permissions | Update permissions
 [**templateFoldersUpdateTags**](TemplatesApi.md#templateFoldersUpdateTags) | **PUT** /api/rp/v1/Templates/Folder/{id}/UpdateTags | Update tags
 [**templatesCopyFile**](TemplatesApi.md#templatesCopyFile) | **POST** /api/rp/v1/Templates/File/{id}/Copy/{folderId} | Copy file to a specified folder
+[**templatesCreateSharingKey**](TemplatesApi.md#templatesCreateSharingKey) | **POST** /api/rp/v1/Templates/File/{id}/sharingKey | Create a new key, that can be used to share access to a file  (You need Administrate.Anon permission to create a new key)
 [**templatesDeleteFile**](TemplatesApi.md#templatesDeleteFile) | **DELETE** /api/rp/v1/Templates/File/{id} | Delete specified file
+[**templatesDeleteSharingKey**](TemplatesApi.md#templatesDeleteSharingKey) | **DELETE** /api/rp/v1/Templates/File/{id}/sharingKey | Deletes a sharing key, making links, that utilizing it no longer work
 [**templatesExport**](TemplatesApi.md#templatesExport) | **POST** /api/rp/v1/Templates/File/{id}/Export | Export specified report template to a specified format
 [**templatesGetFile**](TemplatesApi.md#templatesGetFile) | **GET** /api/rp/v1/Templates/File/{id} | Get specified file
 [**templatesGetFileHistory**](TemplatesApi.md#templatesGetFileHistory) | **GET** /api/rp/v1/Templates/File/{id}/History | Returns list of actions, performed on this file
 [**templatesGetFilesCount**](TemplatesApi.md#templatesGetFilesCount) | **GET** /api/rp/v1/Templates/Folder/{id}/CountFiles | Get count of files what contains in a specified folder
 [**templatesGetFilesList**](TemplatesApi.md#templatesGetFilesList) | **GET** /api/rp/v1/Templates/Folder/{id}/ListFiles | Get all files from specified folder. &lt;br /&gt;  User with Get Entity permission can access this method. &lt;br /&gt;  The method will returns minimal infomration about the file: &lt;br /&gt;  id, name, size, editedTime, createdTime, tags, status, statusReason.
 [**templatesGetPermissions**](TemplatesApi.md#templatesGetPermissions) | **GET** /api/rp/v1/Templates/File/{id}/permissions | 
+[**templatesGetSharingKeys**](TemplatesApi.md#templatesGetSharingKeys) | **GET** /api/rp/v1/Templates/File/{id}/sharingKeys | Returns all sharing keys, associated with the file
 [**templatesMoveFile**](TemplatesApi.md#templatesMoveFile) | **POST** /api/rp/v1/Templates/File/{id}/Move/{folderId} | Move file to a specified folder
 [**templatesMoveFileToBin**](TemplatesApi.md#templatesMoveFileToBin) | **DELETE** /api/rp/v1/Templates/File/{id}/ToBin | Move specified file to recycle bin
 [**templatesPrepare**](TemplatesApi.md#templatesPrepare) | **POST** /api/rp/v1/Templates/File/{id}/Prepare | Prepare specified template to report
@@ -159,6 +163,62 @@ Configure JWT:
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a id="templateFolderAndFileCountRecycleBinFoldersAndFiles"></a>
+# **templateFolderAndFileCountRecycleBinFoldersAndFiles**
+> CountVM templateFolderAndFileCountRecycleBinFoldersAndFiles(subscriptionId, searchPattern, useRegex)
+
+Count all folders and files from recycle bin
+
+User with a Get DeletedFiles permission can access this method.
+
+### Example
+```kotlin
+// Import classes:
+//import org.openapitools.client.infrastructure.*
+//import cloud.fastreport.model.*
+
+val apiInstance = TemplatesApi()
+val subscriptionId : kotlin.String = subscriptionId_example // kotlin.String | subscription id
+val searchPattern : kotlin.String = searchPattern_example // kotlin.String | 
+val useRegex : kotlin.Boolean = true // kotlin.Boolean | 
+try {
+    val result : CountVM = apiInstance.templateFolderAndFileCountRecycleBinFoldersAndFiles(subscriptionId, searchPattern, useRegex)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling TemplatesApi#templateFolderAndFileCountRecycleBinFoldersAndFiles")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling TemplatesApi#templateFolderAndFileCountRecycleBinFoldersAndFiles")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subscriptionId** | **kotlin.String**| subscription id |
+ **searchPattern** | **kotlin.String**|  | [optional] [default to &quot;&quot;]
+ **useRegex** | **kotlin.Boolean**|  | [optional] [default to false]
+
+### Return type
+
+[**CountVM**](CountVM.md)
+
+### Authorization
+
+
+Configure ApiKey:
+    ApiClient.username = ""
+    ApiClient.password = ""
+Configure JWT:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a id="templateFolderAndFileDeleteFiles"></a>
@@ -311,7 +371,7 @@ Name | Type | Description  | Notes
  **id** | **kotlin.String**| folder id |
  **skip** | **kotlin.Int**| number of folder and files, that have to be skipped | [optional] [default to 0]
  **take** | **kotlin.Int**| number of folder and files, that have to be returned | [optional] [default to 10]
- **orderBy** | [**FileSorting**](.md)| indicates a field to sort by | [optional] [enum: None, CreatedTime, EditedTime, Size, Name]
+ **orderBy** | [**FileSorting**](.md)| indicates a field to sort by | [optional] [enum: CreatedTime, EditedTime, Size, Name]
  **desc** | **kotlin.Boolean**| indicates if sorting is descending | [optional] [default to false]
  **searchPattern** | **kotlin.String**|  | [optional] [default to &quot;&quot;]
  **useRegex** | **kotlin.Boolean**|  | [optional] [default to false]
@@ -375,7 +435,7 @@ Name | Type | Description  | Notes
  **subscriptionId** | **kotlin.String**| subscription id |
  **skip** | **kotlin.Int**| number of folder and files, that have to be skipped | [optional] [default to 0]
  **take** | **kotlin.Int**| number of folder and files, that have to be returned | [optional] [default to 10]
- **orderBy** | [**FileSorting**](.md)| indicates a field to sort by | [optional] [enum: None, CreatedTime, EditedTime, Size, Name]
+ **orderBy** | [**FileSorting**](.md)| indicates a field to sort by | [optional] [enum: CreatedTime, EditedTime, Size, Name]
  **desc** | **kotlin.Boolean**| indicates if sorting is descending | [optional] [default to false]
  **searchPattern** | **kotlin.String**|  | [optional] [default to &quot;&quot;]
  **useRegex** | **kotlin.Boolean**|  | [optional] [default to false]
@@ -964,7 +1024,7 @@ Name | Type | Description  | Notes
  **id** | **kotlin.String**| folder id |
  **skip** | **kotlin.Int**| number of files, that have to be skipped | [optional] [default to 0]
  **take** | **kotlin.Int**| number of files, that have to be returned | [optional] [default to 10]
- **orderBy** | [**FileSorting**](.md)|  | [optional] [enum: None, CreatedTime, EditedTime, Size, Name]
+ **orderBy** | [**FileSorting**](.md)|  | [optional] [enum: CreatedTime, EditedTime, Size, Name]
  **desc** | **kotlin.Boolean**|  | [optional] [default to false]
  **searchPattern** | **kotlin.String**|  | [optional] [default to &quot;&quot;]
  **useRegex** | **kotlin.Boolean**|  | [optional] [default to false]
@@ -1728,6 +1788,58 @@ Configure JWT:
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a id="templatesCreateSharingKey"></a>
+# **templatesCreateSharingKey**
+> FileSharingKeysVM templatesCreateSharingKey(id, createFileShareVM)
+
+Create a new key, that can be used to share access to a file  (You need Administrate.Anon permission to create a new key)
+
+### Example
+```kotlin
+// Import classes:
+//import org.openapitools.client.infrastructure.*
+//import cloud.fastreport.model.*
+
+val apiInstance = TemplatesApi()
+val id : kotlin.String = id_example // kotlin.String | file id
+val createFileShareVM : CreateFileShareVM =  // CreateFileShareVM | parameters for sharing key creation
+try {
+    val result : FileSharingKeysVM = apiInstance.templatesCreateSharingKey(id, createFileShareVM)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling TemplatesApi#templatesCreateSharingKey")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling TemplatesApi#templatesCreateSharingKey")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **kotlin.String**| file id |
+ **createFileShareVM** | [**CreateFileShareVM**](CreateFileShareVM.md)| parameters for sharing key creation | [optional]
+
+### Return type
+
+[**FileSharingKeysVM**](FileSharingKeysVM.md)
+
+### Authorization
+
+
+Configure ApiKey:
+    ApiClient.username = ""
+    ApiClient.password = ""
+Configure JWT:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a id="templatesDeleteFile"></a>
 # **templatesDeleteFile**
 > templatesDeleteFile(id)
@@ -1760,6 +1872,57 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **kotlin.String**| file id |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+
+Configure ApiKey:
+    ApiClient.username = ""
+    ApiClient.password = ""
+Configure JWT:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a id="templatesDeleteSharingKey"></a>
+# **templatesDeleteSharingKey**
+> templatesDeleteSharingKey(id, key)
+
+Deletes a sharing key, making links, that utilizing it no longer work
+
+### Example
+```kotlin
+// Import classes:
+//import org.openapitools.client.infrastructure.*
+//import cloud.fastreport.model.*
+
+val apiInstance = TemplatesApi()
+val id : kotlin.String = id_example // kotlin.String | file id
+val key : kotlin.String = key_example // kotlin.String | key to delete
+try {
+    apiInstance.templatesDeleteSharingKey(id, key)
+} catch (e: ClientException) {
+    println("4xx response calling TemplatesApi#templatesDeleteSharingKey")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling TemplatesApi#templatesDeleteSharingKey")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **kotlin.String**| file id |
+ **key** | **kotlin.String**| key to delete |
 
 ### Return type
 
@@ -2031,7 +2194,7 @@ Name | Type | Description  | Notes
  **skip** | **kotlin.Int**| number of files, that have to be skipped | [optional] [default to 0]
  **take** | **kotlin.Int**| number of files, that have to be returned | [optional] [default to 10]
  **searchPattern** | **kotlin.String**|  | [optional]
- **orderBy** | [**FileSorting**](.md)|  | [optional] [enum: None, CreatedTime, EditedTime, Size, Name]
+ **orderBy** | [**FileSorting**](.md)|  | [optional] [enum: CreatedTime, EditedTime, Size, Name]
  **desc** | **kotlin.Boolean**|  | [optional] [default to false]
  **useRegex** | **kotlin.Boolean**|  | [optional] [default to false]
 
@@ -2088,6 +2251,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FilePermissionsVM**](FilePermissionsVM.md)
+
+### Authorization
+
+
+Configure ApiKey:
+    ApiClient.username = ""
+    ApiClient.password = ""
+Configure JWT:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a id="templatesGetSharingKeys"></a>
+# **templatesGetSharingKeys**
+> FileSharingKeysVM templatesGetSharingKeys(id)
+
+Returns all sharing keys, associated with the file
+
+### Example
+```kotlin
+// Import classes:
+//import org.openapitools.client.infrastructure.*
+//import cloud.fastreport.model.*
+
+val apiInstance = TemplatesApi()
+val id : kotlin.String = id_example // kotlin.String | file id
+try {
+    val result : FileSharingKeysVM = apiInstance.templatesGetSharingKeys(id)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling TemplatesApi#templatesGetSharingKeys")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling TemplatesApi#templatesGetSharingKeys")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **kotlin.String**| file id |
+
+### Return type
+
+[**FileSharingKeysVM**](FileSharingKeysVM.md)
 
 ### Authorization
 

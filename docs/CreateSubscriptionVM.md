@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **dollarT** | **kotlin.String** |  | 
 **start** | [**java.time.OffsetDateTime**](java.time.OffsetDateTime.md) |  |  [optional]
 **end** | [**java.time.OffsetDateTime**](java.time.OffsetDateTime.md) |  |  [optional]
+**tags** | **kotlin.collections.List&lt;kotlin.String&gt;** |  |  [optional]
 
 
 

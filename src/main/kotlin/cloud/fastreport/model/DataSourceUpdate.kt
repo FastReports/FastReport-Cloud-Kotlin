@@ -22,7 +22,7 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * Values: _0,_1,_2,_4,_8,minus1
+ * Values: _0,_1,_2,_4,_8,_16,minus1
  */
 
 @JsonClass(generateAdapter = false)
@@ -42,6 +42,9 @@ enum class DataSourceUpdate(val value: kotlin.Int) {
 
     @Json(name = "8")
     _8(8),
+
+    @Json(name = "16")
+    _16(16),
 
     @Json(name = "-1")
     minus1(-1);

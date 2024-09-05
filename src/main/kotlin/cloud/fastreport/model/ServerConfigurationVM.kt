@@ -65,5 +65,7 @@ interface ServerConfigurationVM : CloudBaseVM {
     val authServerName: kotlin.String?
     @Json(name = "updateWorkspaceLink")
     val updateWorkspaceLink: kotlin.String?
+    @Json(name = "sharingEnabled")
+    val sharingEnabled: kotlin.Boolean?
 }
 

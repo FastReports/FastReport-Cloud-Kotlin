@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **creatorUserId** | **kotlin.String** |  |  [optional]
 **status** | [**DataSourceStatus**](DataSourceStatus.md) |  |  [optional]
 **errorMessage** | **kotlin.String** |  |  [optional]
+**selectCommands** | [**kotlin.collections.List&lt;DataSourceSelectCommandVM&gt;**](DataSourceSelectCommandVM.md) |  |  [optional]
 
 
 
